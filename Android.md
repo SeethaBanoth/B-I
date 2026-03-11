@@ -1,4 +1,4 @@
- **Android Architecture** 
+ # Android Architecture 
 
 It explains how the Android operating system is structured in layers. Each layer has a specific role in running applications on devices like phones or tablets.
 
@@ -14,7 +14,7 @@ Linux Kernel
 
 ---
 
-# 1. Applications Layer
+## 1. Applications Layer
 
 This is the **top layer** where all Android apps run.
 
@@ -44,7 +44,7 @@ When you open **Camera App**, it calls camera APIs from the framework.
 
 ---
 
-# 2. Application Framework
+## 2. Application Framework
 
 This layer provides **APIs and system services** for applications.
 
@@ -86,7 +86,7 @@ frameworks/base/media/
 
 ---
 
-# 3. Android Runtime (ART) + Native Libraries
+## 3. Android Runtime (ART) + Native Libraries
 
 ## Android Runtime (ART)
 
@@ -139,7 +139,7 @@ frameworks/av/
 
 ---
 
-# 4. Hardware Abstraction Layer (HAL)
+## 4. Hardware Abstraction Layer (HAL)
 
 HAL acts as a **bridge between hardware and Android framework**.
 
@@ -187,7 +187,7 @@ hardware/interfaces/sensors/
 
 ---
 
-# 5. Linux Kernel
+## 5. Linux Kernel
 
 This is the **lowest layer** of Android architecture.
 
@@ -228,7 +228,7 @@ kernel/msm/
 
 ---
 
-# Full Android Architecture Flow
+## Full Android Architecture Flow
 
 Example: **Playing music**
 
@@ -248,7 +248,7 @@ Speaker Hardware
 
 ---
 
-# Simple Diagram
+## Simple Diagram
 
 ```
 +-------------------------+
@@ -282,7 +282,7 @@ Speaker Hardware
 
 ---
 
-# In Build & Integration (Your Project)
+## In Build & Integration (Your Project)
 
 When comparing **Android 15 vs Android 16**, most changes happen in:
 
@@ -306,11 +306,6 @@ Then integrate the new feature into Android 15 and build.
 
 
 
-
-
-**real-time example Opening the Camera App** and see how it goes through the **Android Architecture layers**. 
-
-
 ---
 
 # Real-Time Example: Opening Camera App
@@ -319,7 +314,7 @@ When you tap the **Camera icon**, many layers of Android work together.
 
 ---
 
-# Step 1: Applications Layer
+## Step 1: Applications Layer
 
 You click the **Camera App icon** on your phone.
 
@@ -343,7 +338,7 @@ User → Camera App
 
 ---
 
-# Step 2: Application Framework
+## Step 2: Application Framework
 
 Now the app talks to the **Android Framework APIs**.
 
@@ -379,7 +374,7 @@ frameworks/av/
 
 ---
 
-# Step 3: Android Runtime (ART)
+## Step 3: Android Runtime (ART)
 
 Now the **Java/Kotlin code of the app runs**.
 
@@ -403,7 +398,7 @@ ART (Android Runtime)
 
 ---
 
-# Step 4: Native Libraries
+## Step 4: Native Libraries
 
 The camera needs **image processing and media support**.
 
@@ -438,7 +433,7 @@ system/lib/
 
 ---
 
-# Step 5: Hardware Abstraction Layer (HAL)
+## Step 5: Hardware Abstraction Layer (HAL)
 
 HAL acts as a **translator between software and hardware**.
 
@@ -465,7 +460,7 @@ vendor/qcom/
 
 ---
 
-# Step 6: Linux Kernel
+## Step 6: Linux Kernel
 
 The **Linux Kernel controls the camera driver**.
 
@@ -488,7 +483,7 @@ Linux Kernel
 
 ---
 
-# Step 7: Hardware
+## Step 7: Hardware
 
 Finally the **camera sensor captures the image**.
 
@@ -504,7 +499,7 @@ Image Captured
 
 ---
 
-# Full Flow (Very Simple)
+## Full Flow (Very Simple)
 
 ```
 User taps Camera App
@@ -528,7 +523,7 @@ Image captured
 
 ---
 
-# One More Example (Opening WhatsApp)
+## One More Example (Opening WhatsApp)
 
 ```
 User opens WhatsApp
@@ -551,17 +546,16 @@ WiFi/Internet hardware
 ---
 
 
-
-                       ** changes between the aosp 15 and aosp 16**
+# changes between the aosp 15 and aosp 16
 
 
 I’ll explain the **important changes between Android 15 and Android 16** in a **simple “Before → After → Why” format**, so it’s easy for you to understand (especially useful for **Android build & integration**).
 
 ---
 
-# 1. Memory Management Change (16 KB Page Size)
+## 1. Memory Management Change (16 KB Page Size)
 
-## Before (Old Android versions)
+### Before (Old Android versions)
 
 * Android used **4 KB memory page size**.
 * Memory was divided into **4 KB blocks**.
@@ -585,7 +579,7 @@ Problem:
 
 ---
 
-## After (Android 15 / 16 improvement)
+### After (Android 15 / 16 improvement)
 
 Android now supports **16 KB page size**.
 
@@ -610,7 +604,7 @@ Testing shows improvements like:
 
 ---
 
-## Why this change?
+### Why this change?
 
 Because modern devices have:
 
@@ -622,9 +616,9 @@ So larger memory pages **reduce memory management overhead**. ([Android Develope
 
 ---
 
-# 2. Profiling and Performance Monitoring APIs
+## 2. Profiling and Performance Monitoring APIs
 
-## Before (Android 15)
+### Before (Android 15)
 
 Apps could collect performance traces using:
 
@@ -651,7 +645,7 @@ Problem:
 
 ---
 
-## After (Android 16)
+### After (Android 16)
 
 Android added **System-triggered profiling**.
 
@@ -673,9 +667,9 @@ This helps developers **debug performance issues easily**. ([Android Developers]
 
 ---
 
-# 3. CPU and GPU Resource APIs
+## 3. CPU and GPU Resource APIs
 
-## Before (Android 15)
+### Before (Android 15)
 
 Apps could not easily know:
 
@@ -692,7 +686,7 @@ Example problem:
 
 ---
 
-## After (Android 16)
+### After (Android 16)
 
 New APIs:
 
@@ -725,9 +719,9 @@ Result:
 
 ---
 
-# 4. Display Refresh Rate Improvements
+## 4. Display Refresh Rate Improvements
 
-## Before (Android 14 / older)
+### Before (Android 14 / older)
 
 Refresh rate switching was **static**.
 
@@ -742,7 +736,7 @@ Switching caused **jitter or lag**.
 
 ---
 
-## After (Android 15 + improved in Android 16)
+### After (Android 15 + improved in Android 16)
 
 Android introduced **Adaptive Refresh Rate (ARR)**.
 
@@ -770,9 +764,9 @@ Benefits:
 
 ---
 
-# 5. Boot Process Improvement
+## 5. Boot Process Improvement
 
-## Before (Older Android)
+### Before (Older Android)
 
 Every manufacturer had its **own bootloader implementation**.
 
@@ -791,7 +785,7 @@ Problem:
 
 ---
 
-## After (Android 16)
+### After (Android 16)
 
 Android introduced **Generic Bootloader (GBL)**.
 
@@ -809,9 +803,9 @@ Benefits:
 
 ---
 
-# 6. Accessibility Improvements
+## 6. Accessibility Improvements
 
-## Before
+### Before
 
 Accessibility APIs were limited.
 
@@ -821,7 +815,7 @@ Example:
 
 ---
 
-## After (Android 16)
+### After (Android 16)
 
 Android added new APIs for:
 
@@ -842,7 +836,7 @@ This helps:
 
 ---
 
-# 7. Smart Notifications (User Feature)
+## 7. Smart Notifications (User Feature)
 
 Android 16 introduced **AI notification summaries**.
 
@@ -866,7 +860,7 @@ This helps users quickly read notifications. ([The Verge][6])
 
 ---
 
-# Summary (Very Important for Interviews)
+## Summary (Very Important for Interviews)
 
 | Area          | Before               | After                      |
 | ------------- | -------------------- | -------------------------- |
@@ -898,7 +892,7 @@ hardware/interfaces/
 
 
 
-                       ** feature that in aosp 16 but not in aosp 15**
+   # ** feature that in aosp 16 but not in aosp 15**
 
 
 Yes. Sometimes **AOSP introduces completely new features/components that did not exist at all in earlier versions**.
@@ -908,9 +902,9 @@ I will explain it in a **simple way**.
 
 ---
 
-# 1. Android Virtualization Framework (AVF)
+## 1. Android Virtualization Framework (AVF)
 
-## What it is
+### What it is
 
 **Android Virtualization Framework** allows Android to run **virtual machines (VMs)** securely inside the device.
 
@@ -928,7 +922,7 @@ Secure app / Linux environment
 
 ---
 
-# Before (Older AOSP versions like 15)
+## Before (Older AOSP versions like 15)
 
 There was **no full virtualization framework available for apps**.
 
@@ -954,7 +948,7 @@ Hardware
 
 ---
 
-# After (AOSP 16)
+## After (AOSP 16)
 
 Android added **full virtualization support using AVF**.
 
@@ -976,7 +970,7 @@ Secure environment
 
 ---
 
-# Why Google introduced this
+## Why Google introduced this
 
 Main reasons:
 
@@ -1026,7 +1020,7 @@ Developer tools
 
 ---
 
-# Where it exists in AOSP source
+## Where it exists in AOSP source
 
 New directories related to virtualization appear in newer AOSP versions:
 
@@ -1046,7 +1040,7 @@ pVM (Protected Virtual Machine)
 
 ---
 
-# Real Example Use Case
+## Real Example Use Case
 
 Example: **Secure payment system**
 
@@ -1080,797 +1074,4 @@ Even if Android is attacked, the **secure VM protects sensitive data**.
 
 ---
 
-                                  **Commits**
----
-
-# 1️⃣ What is a Commit?
-
-A **commit** is a **record of changes made to the source code** in a version control system (Android uses **Git**).
-
-It saves:
-
-* What code changed
-* Who changed it
-* When it was changed
-* Why it was changed
-
-You can think of it like a **snapshot of the code at a specific time**.
-
-Example:
-
-```text
-Commit ID: a1b2c3d
-Author: Developer
-Date: 2025-01-10
-Message: Added CPU headroom API
-```
-
----
-
-# 2️⃣ Simple Example
-
-Suppose a file exists:
-
-```cpp
-// File: calculator.cpp
-int add(int a, int b){
-    return a + b;
-}
-```
-
-Now a developer improves it:
-
-```cpp
-int add(int a, int b){
-    int result = a + b;
-    return result;
-}
-```
-
-This change becomes a **commit**.
-
-Commit record:
-
-```text
-Commit message: Improved add() function readability
-Files changed: calculator.cpp
-```
-
----
-
-# 3️⃣ Structure of a Commit
-
-Every commit contains several parts.
-
-### 1. Commit ID (Hash)
-
-Example:
-
-```
-e7f8a91c5f3a
-```
-
-This uniquely identifies the commit.
-
----
-
-### 2. Author
-
-The developer who made the change.
-
-```
-Author: John Doe
-```
-
----
-
-### 3. Date
-
-When the change was made.
-
-```
-Date: Tue Feb 4 2025
-```
-
----
-
-### 4. Commit Message
-
-Explains **why the change was made**.
-
-Example:
-
-```
-Add CPU headroom API for performance monitoring
-```
-
----
-
-### 5. Code Difference (Diff)
-
-Shows **exactly what changed**.
-
-Example:
-
-```diff
-- int result = a + b;
-+ int result = a + b + 0;
-```
-
----
-
-# 4️⃣ Example of an AOSP Commit
-
-Example commit from Android source.
-
-```
-commit 4d21a93
-Author: Android Developer
-Date: 2025-03-10
-
-Add CPU headroom API
-```
-
-Changed file:
-
-```
-frameworks/base/core/java/android/os/PowerManager.java
-```
-
-Code change:
-
-```java
-public int getCpuHeadroom() {
-    return nativeGetCpuHeadroom();
-}
-```
-
-This commit **adds a new API**.
-
----
-
-# 5️⃣ Why Commits Are Important
-
-Commits help developers:
-
-### Track changes
-
-You can see **who changed what**.
-
-### Fix bugs
-
-If a bug appears, developers can find **which commit caused it**.
-
-### Restore older versions
-
-You can revert to previous commits.
-
-### Collaboration
-
-Many developers can work on the same project.
-
----
-
-# 6️⃣ Commit Process (Step by Step)
-
-Typical workflow in Android development:
-
-### Step 1 – Modify Code
-
-Developer edits a file.
-
-Example:
-
-```
-frameworks/base/services/display/DisplayManagerService.java
-```
-
----
-
-### Step 2 – Add Changes
-
-Command:
-
-```bash
-git add .
-```
-
-This prepares files for commit.
-
----
-
-### Step 3 – Create Commit
-
-Command:
-
-```bash
-git commit -m "Add adaptive refresh rate API"
-```
-
-Now the change becomes a **commit**.
-
----
-
-# 7️⃣ Example of Multiple Commits
-
-Project history might look like this:
-
-```
-Commit 1: Initial framework setup
-Commit 2: Add camera service
-Commit 3: Fix memory leak
-Commit 4: Add CPU headroom API
-```
-
-Each commit is a **step in development**.
-
----
-
-# 8️⃣ How Commits Help in Android Version Comparison
-
-When comparing **AOSP 15 and AOSP 16**, differences come from **many commits**.
-
-Example:
-
-```
-Android 15 → commit history up to X
-Android 16 → commit history up to Y
-```
-
-Android 16 includes **additional commits**.
-
-Example:
-
-```
-Android 15
- ├ commit A
- ├ commit B
- └ commit C
-
-Android 16
- ├ commit A
- ├ commit B
- ├ commit C
- ├ commit D
- └ commit E
-```
-
-Commits **D and E** are new features.
-
----
-
-# 9️⃣ Backporting Using Commits
-
-When integrating features from Android 16 to Android 15:
-
-Steps:
-
-1. Find the commit that introduced the feature.
-2. Copy that commit to the Android 15 branch.
-3. Fix dependencies.
-4. Build and test.
-
-Example command:
-
-```bash
-git cherry-pick <commit-id>
-```
-
-This copies the commit to another branch.
-
----
-
-# 🔟 Real Example of Backporting
-
-Suppose Android 16 added:
-
-```
-CPU headroom API
-```
-
-Commit:
-
-```
-commit 92fd8e
-Add CPU headroom API
-```
-
-Integration engineer runs:
-
-```bash
-git cherry-pick 92fd8e
-```
-
-Now the **same change appears in Android 15**.
-
----
-
-# Simple Analogy
-
-Think of commits like **saving versions of a document**.
-
-Example:
-
-```
-Document v1 → first commit
-Document v2 → second commit
-Document v3 → third commit
-```
-
-You can always **go back to any version**.
-
----
-
-
-                                   **millions of commits** 
----
-
-# 1️⃣ How Many Commits Android Has
-
-Android source code is divided into **many Git repositories** such as:
-
-```
-frameworks/base
-system/core
-packages/apps
-bionic
-kernel
-hardware/interfaces
-```
-
-Each repository has **its own commit history**.
-
-Example (approximate scale):
-
-| Repository      | Approx commits |
-| --------------- | -------------- |
-| frameworks/base | 200k+          |
-| system/core     | 40k+           |
-| bionic          | 30k+           |
-| packages/apps   | 100k+          |
-| kernel          | 500k+          |
-
-So overall Android has **millions of commits**.
-
----
-
-# 2️⃣ What Types of Commits Exist
-
-Commits are usually categorized by **what they change**.
-
-### 1. Feature Commits
-
-Add new functionality.
-
-Example:
-
-```
-Add camera API
-Add CPU headroom API
-Add new display feature
-```
-
-These introduce **new capabilities**.
-
----
-
-### 2. Bug Fix Commits
-
-Fix errors in existing code.
-
-Example:
-
-```
-Fix memory leak in ActivityManager
-Fix crash in camera service
-```
-
-These are **very common commits**.
-
----
-
-### 3. Security Commits
-
-Fix security vulnerabilities.
-
-Example:
-
-```
-Fix privilege escalation vulnerability
-Fix buffer overflow in media framework
-```
-
-These are **very important commits**.
-
----
-
-### 4. Performance Commits
-
-Improve speed or efficiency.
-
-Example:
-
-```
-Optimize memory allocation
-Improve boot time
-Reduce CPU usage
-```
-
----
-
-### 5. Refactoring Commits
-
-Change internal code structure **without changing behavior**.
-
-Example:
-
-```
-Refactor power manager code
-Clean up unused functions
-```
-
----
-
-# 3️⃣ How Commits Work Internally
-
-Git stores commits as a **chain of snapshots**.
-
-Example history:
-
-```
-Commit A → Commit B → Commit C → Commit D
-```
-
-Each commit contains:
-
-```
-commit id
-author
-date
-commit message
-code changes
-```
-
-When developers build Android, the **latest commit state** is used.
-
----
-
-# 4️⃣ How Commits Become New Android Versions
-
-Example:
-
-```
-Android 15
- ├ commit A
- ├ commit B
- └ commit C
-
-Android 16
- ├ commit A
- ├ commit B
- ├ commit C
- ├ commit D
- └ commit E
-```
-
-Commits **D and E** are new changes added after Android 15.
-
----
-
-# 5️⃣ Safe vs Unsafe Commits (Important in Build & Integration)
-
-When integrating commits, engineers classify them.
-
----
-
-## Safe Commits
-
-These are usually safe to merge.
-
-Examples:
-
-1. Bug fixes
-2. Security patches
-3. Documentation updates
-4. Minor improvements
-
-Example commit message:
-
-```
-Fix null pointer crash in camera service
-```
-
-These normally **do not affect other components**.
-
----
-
-## Risky / Unsafe Commits
-
-These can break the system.
-
-Examples:
-
-1. Kernel changes
-2. Major framework modifications
-3. Hardware interface changes
-4. API changes
-
-Example:
-
-```
-Change display HAL interface
-```
-
-If you integrate this incorrectly:
-
-```
-Framework ↔ HAL mismatch
-```
-
-The system may fail to boot.
-
----
-
-# 6️⃣ How Integration Engineers Choose Commits
-
-Typical process:
-
-```
-1. Identify feature commit
-2. Check dependencies
-3. Check affected modules
-4. Integrate commit
-5. Build
-6. Test
-```
-
-Command example:
-
-```
-git cherry-pick <commit-id>
-```
-
-This copies the commit into another branch.
-
----
-
-# 7️⃣ Example in Android Build Work
-
-Suppose Android 16 added:
-
-```
-CPU headroom API
-```
-
-Integration engineer:
-
-```
-Find commit
-Check dependencies
-Cherry-pick commit
-Fix compile errors
-Build system
-Test feature
-```
-
----
-
-# 8️⃣ Simple Way to Remember
-
-You can think of commits like **versions of a book**.
-
-```
-Version 1 → commit
-Version 2 → commit
-Version 3 → commit
-```
-
-Android development history is basically **a long chain of commits**.
-
----
-
-
-                                                            **types of commits** 
----
-
-## 1. Feature Commit (`feat`)
-
-Adds a **new feature** to the project.
-
-Example:
-
-```
-feat: add dark mode support
-```
-
-✔ Usually safe if isolated
-⚠ Might affect other modules if APIs change
-
----
-
-## 2. Fix Commit (`fix`)
-
-Fixes a **bug or defect** in the code.
-
-Example:
-
-```
-fix: resolve crash in camera service
-```
-
-✔ Usually safe
-✔ Often cherry-picked to older versions
-
----
-
-## 3. Refactor Commit (`refactor`)
-
-Changes the **internal code structure without changing behavior**.
-
-Example:
-
-```
-refactor: simplify media service initialization
-```
-
-✔ Mostly safe
-⚠ Risk if refactor touches many modules
-
----
-
-## 4. Documentation Commit (`docs`)
-
-Changes **documentation only**.
-
-Example:
-
-```
-docs: update API usage guide
-```
-
-✔ Completely safe
-✔ No code behavior changes
-
----
-
-## 5. Style Commit (`style`)
-
-Code formatting changes only.
-
-Example:
-
-```
-style: fix indentation in Bluetooth service
-```
-
-✔ Safe
-✔ No functional changes
-
----
-
-## 6. Performance Commit (`perf`)
-
-Improves **performance** without changing functionality.
-
-Example:
-
-```
-perf: optimize binder thread handling
-```
-
-⚠ Usually safe
-⚠ But can affect timing-sensitive modules
-
----
-
-## 7. Test Commit (`test`)
-
-Adds or modifies **tests**.
-
-Example:
-
-```
-test: add unit tests for audio manager
-```
-
-✔ Safe
-✔ Only affects testing
-
----
-
-## 8. Chore Commit (`chore`)
-
-Maintenance tasks not affecting source logic.
-
-Example:
-
-```
-chore: update build scripts
-```
-
-✔ Usually safe
-⚠ Might affect build system
-
----
-
-## 9. Build Commit (`build`)
-
-Changes to **build system or dependencies**.
-
-Example:
-
-```
-build: update gradle version
-```
-
-⚠ Risky for integration across versions
-
----
-
-## 10. Revert Commit (`revert`)
-
-Undo a previous commit.
-
-Example:
-
-```
-revert: remove unstable power HAL change
-```
-
-⚠ Must verify dependency
-
----
-
-# Safe vs Risky for Integration (AOSP → Downstream)
-
-### Safest commits
-
-These rarely break other modules:
-
-* `docs`
-* `style`
-* `test`
-* small `fix`
-
-### Medium risk
-
-Need review:
-
-* `refactor`
-* `perf`
-* `chore`
-
-### High risk
-
-Often break builds:
-
-* `feat`
-* `build`
-* API changes
-* framework architectural changes
-
----
-
-# Example Safe Cherry-Pick Candidates
-
-When integrating changes from Android 16 into Android 15, typically look for:
-
-* crash fixes
-* security patches
-* small service bug fixes
-
-Avoid:
-
-* framework API changes
-* HAL interface updates
-* major system service rewrites
-
----
-
-✅ **Simple rule used by AOSP maintainers:**
-
-> Small `fix` commits touching a single file or module are safest to cherry-pick.
-
----
-
-
+                                  
